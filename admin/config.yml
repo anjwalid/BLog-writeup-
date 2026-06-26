@@ -1,9 +1,6 @@
 backend:
-  name: github
-  repo: anjwalid/BLog-writeup-
+  name: git-gateway
   branch: master
-  auth_type: pkce
-  app_id: Ov23li0ot2y5Iym4AKcF
 
 media_folder: assets/img/posts
 public_folder: /assets/img/posts
@@ -41,9 +38,9 @@ collections:
         name: description
         widget: string
         required: false
-        hint: Courte description affichée dans les previews SEO
+        hint: Courte description affichee dans les previews SEO
 
-      - label: Catégories
+      - label: Categories
         name: categories
         widget: list
         required: false
@@ -61,20 +58,15 @@ collections:
         required: false
         fields:
           - { label: Chemin, name: path, widget: image, required: false }
-          - {
-              label: Texte alternatif,
-              name: alt,
-              widget: string,
-              required: false
-            }
+          - { label: Texte alternatif, name: alt, widget: string, required: false }
 
-      - label: Épingler en haut
+      - label: Epingler en haut
         name: pin
         widget: boolean
         default: false
         required: false
 
-      - label: Table des matières
+      - label: Table des matieres
         name: toc
         widget: boolean
         default: true
