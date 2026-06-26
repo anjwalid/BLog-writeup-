@@ -1,0 +1,85 @@
+backend:
+  name: github
+  repo: anjwalid/BLog-writeup-
+  branch: master
+  auth_type: pkce
+  app_id: Ov23li0ot2y5Iym4AKcF
+
+media_folder: assets/img/posts
+public_folder: /assets/img/posts
+
+locale: fr
+
+collections:
+  - name: posts
+    label: Articles
+    label_singular: Article
+    folder: _posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: /posts/{{slug}}/
+    fields:
+      - label: Titre
+        name: title
+        widget: string
+        hint: Le titre de ton writeup ou article
+
+      - label: Date de publication
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD HH:mm:ss ZZ"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm:ss"
+        default: ""
+
+      - label: Auteur
+        name: author
+        widget: hidden
+        default: walid
+
+      - label: Description
+        name: description
+        widget: string
+        required: false
+        hint: Courte description affichée dans les previews SEO
+
+      - label: Catégories
+        name: categories
+        widget: list
+        required: false
+        hint: "Ex: [CTF, HackTheBox] ou [Web, Pentest]"
+
+      - label: Tags
+        name: tags
+        widget: list
+        required: false
+        hint: "Ex: [linux, privesc, sqli]"
+
+      - label: Image de couverture
+        name: image
+        widget: object
+        required: false
+        fields:
+          - { label: Chemin, name: path, widget: image, required: false }
+          - {
+              label: Texte alternatif,
+              name: alt,
+              widget: string,
+              required: false
+            }
+
+      - label: Épingler en haut
+        name: pin
+        widget: boolean
+        default: false
+        required: false
+
+      - label: Table des matières
+        name: toc
+        widget: boolean
+        default: true
+        required: false
+
+      - label: Contenu
+        name: body
+        widget: markdown
