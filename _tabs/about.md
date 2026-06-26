@@ -20,4 +20,4 @@ Ce blog est mon espace pour documenter mes writeups de CTF, mes notes de hacking
 
 - GitHub : [anjwalid](https://github.com/anjwalid)
 - LinkedIn : [anjwalid](https://www.linkedin.com/in/anjwalid)
-- Email : zakariahajli40@gmail.com
+- Email : walidanejj@gmail.com
