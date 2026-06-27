@@ -62,18 +62,40 @@ Chaque étape est un point d'entrée potentiel pour un attaquant.
 
 ---
 
-## STRIDE : une base solide, mais incomplète pour l'IA
+## STRIDE : origine, principe, et limites face à l'IA
 
-[STRIDE](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats) est un framework de threat modeling qui classe les menaces en six catégories.
+### Qu'est-ce que STRIDE ?
 
-| Lettre | Menace | Propriété concernée |
-|--------|--------|---------------------|
-| **S** | Spoofing | Authenticité |
-| **T** | Tampering | Intégrité |
-| **R** | Repudiation | Non-répudiation |
-| **I** | Information Disclosure | Confidentialité |
-| **D** | Denial of Service | Disponibilité |
-| **E** | Elevation of Privilege | Autorisation |
+[STRIDE](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats) est un framework de **modélisation des menaces** (*threat modeling*) créé chez **Microsoft en 1999** par **Loren Kohnfelder** et **Praerit Garg**. Il a été popularisé à grande échelle par **Adam Shostack** dans son ouvrage de référence *Threat Modeling: Designing for Security* (2014), et est aujourd'hui intégré au **Microsoft Security Development Lifecycle (SDL)**.
+
+L'idée est simple : pour chaque composant d'un système, on se pose une série de questions structurées autour de six catégories de menaces. Le résultat est une carte des risques que l'on peut ensuite prioriser et mitiger.
+
+> STRIDE est conçu pour fonctionner sur des **diagrammes de flux de données (DFD)**. On identifie chaque composant, chaque flux, chaque point de stockage, et on applique la grille de menaces sur chacun.
+{: .prompt-info }
+
+### Les six catégories
+
+| Lettre | Menace | Propriété violée | Question à se poser |
+|--------|--------|-----------------|---------------------|
+| **S** | Spoofing | Authenticité | Quelqu'un peut-il usurper l'identité d'un composant ou d'un utilisateur ? |
+| **T** | Tampering | Intégrité | Des données peuvent-elles être modifiées sans autorisation ? |
+| **R** | Repudiation | Non-répudiation | Une action malveillante peut-elle être niée faute de traces ? |
+| **I** | Information Disclosure | Confidentialité | Des informations sensibles peuvent-elles être exposées ? |
+| **D** | Denial of Service | Disponibilité | Le service peut-il être rendu indisponible ? |
+| **E** | Elevation of Privilege | Autorisation | Un utilisateur peut-il obtenir plus de droits que prévu ? |
+
+### Pourquoi ça marche bien pour les applications classiques
+
+Pour une application web traditionnelle, STRIDE couvre l'essentiel :
+
+- **S** → un utilisateur peut-il se faire passer pour un autre ? (session hijacking, CSRF)
+- **T** → des données en transit peuvent-elles être altérées ? (man-in-the-middle)
+- **R** → les actions des admins sont-elles auditées ?
+- **I** → une API expose-t-elle des données non filtrées ?
+- **D** → un endpoint est-il protégé contre les requêtes en masse ?
+- **E** → une IDOR permet-elle d'accéder aux ressources d'un autre utilisateur ?
+
+C'est précis, actionnable, et bien outillé (Microsoft Threat Modeling Tool, OWASP Threat Dragon, etc.).
 
 Cette grille reste très utile. Le problème est que, appliquée telle quelle à l'IA, elle manque plusieurs angles critiques.
 
@@ -121,9 +143,9 @@ STRIDE n'est pas à abandonner. Il faut le **réinterpréter** pour chaque caté
 
 ---
 
-## Cas pratique : MegaCorp
+## Cas pratique : DIMAM3AK
 
-Pour rendre ça concret, prenons **MegaCorp** — une entreprise fictive qui opère :
+Pour rendre ça concret, prenons **DIMAM3AK** — une entreprise fictive spécialisée dans la fintech qui opère :
 
 - un chatbot client basé sur un LLM ;
 - un pipeline RAG connecté à une base documentaire interne ;
@@ -137,7 +159,7 @@ Appliquons STRIDE-AI :
 
 **T — Tampering :** des transactions malveillantes sont injectées dans les données d'entraînement du modèle de fraude. Le modèle apprend progressivement à ignorer certains schémas frauduleux.
 
-**R — Repudiation :** MegaCorp ne journalise pas les versions de modèles, les entrées, les sorties ni le contexte RAG. Impossible d'expliquer une décision problématique après coup.
+**R — Repudiation :** DIMAM3AK ne journalise ni les versions de modèles, ni les entrées, ni les sorties, ni le contexte RAG utilisé. Impossible d'expliquer ou d'auditer une décision problématique après coup — ce qui pose un problème réglementaire en plus du risque de sécurité.
 
 **I — Information Disclosure :** un concurrent interroge massivement l'API du moteur de recommandation et reconstruit un modèle équivalent — sans jamais accéder aux poids.
 
@@ -202,9 +224,9 @@ Ces trois frameworks ne sont pas concurrents — ils sont complémentaires et op
 
 ```mermaid
 flowchart TD
-    A["STRIDE-AI\nClasser les menaces"] --> D["Analyse de risques\nIA complète"]
-    B["MITRE ATLAS\nDécrire les techniques"] --> D
-    C["OWASP LLM Top 10\nCartographier par composant"] --> D
+    A["STRIDE-AI<br/>Classer les menaces"] --> D["Analyse de risques<br/>IA complète"]
+    B["MITRE ATLAS<br/>Décrire les techniques"] --> D
+    C["OWASP LLM Top 10<br/>Cartographier par composant"] --> D
 ```
 
 | Framework | Question | Valeur apportée |
