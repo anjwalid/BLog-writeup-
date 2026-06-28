@@ -43,11 +43,11 @@ Les systèmes d'IA héritent des risques classiques de la supply chain logiciell
 
 ```mermaid
 flowchart LR
-    A[Collecte] --> B[Nettoyage & labellisation]
-    B --> C[Entraînement]
-    C --> D[Validation & packaging]
-    D --> E[Inférence]
-    E --> F[RAG / outils / API]
+    A["Collecte"] --> B["Nettoyage et labellisation"]
+    B --> C["Entrainement"]
+    C --> D["Validation et packaging"]
+    D --> E["Inference"]
+    E --> F["RAG / outils / API"]
 ```
 
 Chaque étape est un point d'entrée potentiel pour un attaquant.
