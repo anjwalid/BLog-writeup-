@@ -133,6 +133,9 @@ Dans l'IA, l'actif volé peut être le modèle lui-même. Un attaquant peut inte
 
 ## Réadapter STRIDE au contexte IA
 
+![STRIDE Threat Modeling Gaps — Integrated STRIDE Security Ecosystem](/assets/img/posts/stride-ai-security/stride-gaps.jpg){: width="700" }
+_Chaque catégorie STRIDE révèle un gap spécifique dans les systèmes IA — de la détection de deepfakes au model extraction._
+
 STRIDE n'est pas à abandonner. Il faut le **réinterpréter** pour chaque catégorie.
 
 | STRIDE | Manifestation en IA | Exemple concret |
