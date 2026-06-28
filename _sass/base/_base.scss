@@ -382,6 +382,10 @@ main {
   text-align: center;
 }
 
+.d-none {
+  display: none !important;
+}
+
 /* MathJax */
 mjx-container {
   overflow-y: hidden;
