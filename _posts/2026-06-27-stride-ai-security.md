@@ -9,7 +9,7 @@ categories: [Security, AI Security]
 tags: [stride, ai-security, threat-modeling, mitre-atlas, owasp-llm, llm-security, data-poisoning, prompt-injection]
 mermaid: true
 image:
-  path: /assets/img/posts/stride-ai-security/cover.png
+  path: /assets/img/posts/stride-ai-security/cover.jpg
   alt: "Threat modeling for AI systems — STRIDE, MITRE ATLAS, OWASP LLM Top 10"
 ---
 
@@ -67,7 +67,7 @@ Chaque étape est un point d'entrée potentiel pour un attaquant.
 
 ## STRIDE : origine, principe, et limites face à l'IA
 
-![Microsoft SDL – STRIDE threat categories](/assets/img/posts/stride-ai-security/stride-diagram.png){: w="700" }
+![Microsoft SDL – STRIDE threat categories](/assets/img/posts/stride-ai-security/stride-diagram.png){: width="700" }
 _Les six catégories de menaces STRIDE, intégrées au Microsoft Security Development Lifecycle (SDL)._
 
 ### Qu'est-ce que STRIDE ?
@@ -177,7 +177,7 @@ Appliquons STRIDE-AI :
 
 ## MITRE ATLAS : passer de la menace à la technique
 
-![MITRE ATLAS – Adversarial Threat Landscape for AI Systems](/assets/img/posts/stride-ai-security/mitre-atlas.png){: w="700" }
+![MITRE ATLAS – Adversarial Threat Landscape for AI Systems](/assets/img/posts/stride-ai-security/mitre-atlas.png){: width="700" }
 _MITRE ATLAS : la base de connaissances des techniques adverses ciblant les systèmes IA et ML._
 
 STRIDE répond à la question : **quel type de menace peut exister ?**
@@ -208,7 +208,7 @@ C'est plus précis, plus actionnable, et directement traçable vers des contre-m
 
 ## OWASP LLM Top 10 : cartographier les risques par composant
 
-![OWASP LLM Top 10 – Top 10 for Large Language Model Applications](/assets/img/posts/stride-ai-security/owasp-llm.png){: w="700" }
+![OWASP LLM Top 10 – Top 10 for Large Language Model Applications](/assets/img/posts/stride-ai-security/owasp-llm.jpeg){: width="700" }
 _OWASP LLM Top 10 : les dix risques majeurs pour les applications basées sur des LLM._
 
 STRIDE classe les menaces. MITRE ATLAS décrit comment les réaliser. [OWASP LLM Top 10](https://genai.owasp.org/llm-top-10/) complète l'analyse en **reliant chaque risque aux composants de l'architecture**.
