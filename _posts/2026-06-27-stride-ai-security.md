@@ -224,9 +224,9 @@ Ces trois frameworks ne sont pas concurrents — ils sont complémentaires et op
 
 ```mermaid
 flowchart TD
-    A["STRIDE-AI<br/>Classer les menaces"] --> D["Analyse de risques<br/>IA complète"]
-    B["MITRE ATLAS<br/>Décrire les techniques"] --> D
-    C["OWASP LLM Top 10<br/>Cartographier par composant"] --> D
+    A[STRIDE-AI] --> D[Analyse de risques IA]
+    B[MITRE ATLAS] --> D
+    C[OWASP LLM Top 10] --> D
 ```
 
 | Framework | Question | Valeur apportée |
